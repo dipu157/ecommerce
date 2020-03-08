@@ -24,7 +24,9 @@ Route::get('/category',[
     'as' => 'category-product'
 ]);
 
-/*=========Admin==========*/
+/*=====================================Admin========================================*/
+
+/*=========Category==========*/
 
 Route::get('category/add-category',['uses' => 'CategoryController@addCategory', 'as' => 'add-category']);
 
@@ -43,6 +45,8 @@ Route::post('category/update-category',['uses' => 'CategoryController@updateCate
 
 Route::get('category/delete-category/{id}',['uses' => 'CategoryController@deleteCategory', 'as' => 'delete-category']);
 
+/*=========Brand==========*/
+
 Route::get('brand/add-brand',['uses' => 'BrandController@addBrand', 'as' => 'add-brand']);
 
 Route::post('brand/save-brand',['uses' =>'BrandController@saveBrand', 'as' => 'save-brand']);
@@ -60,12 +64,18 @@ Route::post('brand/update-brand',['uses' => 'BrandController@updateBrand', 'as' 
 
 Route::get('brand/delete-brand/{id}',['uses' => 'BrandController@deleteBrand', 'as' => 'delete-brand']);
 
+/*=========Product==========*/
+
+Route::get('product/add-product',['uses' => 'ProductController@addProduct', 'as' => 'add-product']);
+
+Route::post('product/save-product',['uses' =>'ProductController@saveProduct', 'as' => 'save-product']);
+
+Route::get('product/manage-product',['uses' => 'ProductController@manageProduct', 'as' => 'manage-product']);
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 
 
