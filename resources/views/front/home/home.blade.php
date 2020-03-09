@@ -319,23 +319,25 @@
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
 						<h3 class="heading-tittle">Nuts</h3>
+
+						@foreach($products as $product)
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
 									<img src="{{ asset('/') }}front/images/m1.jpg" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="#" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Almonds, 100g</a>
+										<a href="single.html">{{ $product->product_name }}</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$149.00</span>
+										<span class="item_price">${{ $product->product_price }}</span>
 										<del>$280.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -358,7 +360,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-men">
+						@endforeach
+						<!-- <div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
 									<img src="{{ asset('/') }}front/images/m2.jpg" alt="">
@@ -437,7 +440,7 @@
 
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="clearfix"></div>
 					</div>
 					<!-- //first section (nuts) -->

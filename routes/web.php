@@ -19,7 +19,7 @@ Route::get('/',[
     'as' => '/'
 ]);
 
-Route::get('/category',[
+Route::get('/category/{id}',[
     'uses' => 'EcommerceController@category',
     'as' => 'category-product'
 ]);

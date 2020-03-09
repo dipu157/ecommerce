@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\move;
 use App\Category;
 use App\Brand;
 use App\Product;
@@ -26,9 +25,12 @@ class ProductController extends Controller
 
         $productImage = $request->file('product_image');
         $imageName = $productImage->getClientOriginalName();
-        $directory = '/product-images/';
-        $productImage->move($imageName,$directory);
+        $directory = './product-images/';
         $imageURL = $directory.$imageName;
+        $productImage->move($directory,$imageName);
+
+        //return $imageURL;
+        
 
          $product = new Product();
 
@@ -50,9 +52,10 @@ class ProductController extends Controller
         foreach ($files as $file) {
             
             $name = $file->getClientOriginalName();
-            $directory = '/product-sub-images/';
-            $file->move($name,$directory);
-            $imageURL = $directory.$name;  
+            $directory = './product-sub-images/';
+            $imageURL = $directory.$name; 
+            $file->move($directory,$name);
+             
 
             $subImage = new SubImage();
 

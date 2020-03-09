@@ -235,124 +235,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="top_nav_left">
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-							    aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
+						
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
-								<li class="active">
-									<a class="nav-stylehead" href="index.html">Home
-										<span class="sr-only">(current)</span>
-									</a>
-								</li>
+								@foreach($categories as $category)
 								<li class="">
-									<a class="nav-stylehead" href="about.html">About Us</a>
+									<a class="nav-stylehead" href="{{ route('category-product',['id' => 'category->id']) }}">{{ $category->category_name }}</a>
 								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu multi-column columns-3">
-										<div class="agile_inner_drop_nav_info">
-											<div class="col-sm-4 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="{{ route('category-product') }}">Bakery</a>
-													</li>
-													<li>
-														<a href="product.html">Baking Supplies</a>
-													</li>
-													
-												</ul>
-											</div>
-											<div class="col-sm-4 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="product.html">Pickles</a>
-													</li>
-													<li>
-														<a href="product.html">Pasta & Noodles</a>
-													</li>
-													<li>
-														<a href="product.html">Rice, Flour & Pulses</a>
-													</li>
-													
-												</ul>
-											</div>
-											<div class="col-sm-4 multi-gd-img">
-												<img src="{{ asset('/') }}front/images/nav.png" alt="">
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Household
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu multi-column columns-3">
-										<div class="agile_inner_drop_nav_info">
-											<div class="col-sm-6 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="product2.html">Kitchen & Dining</a>
-													</li>
-													<li>
-														<a href="product2.html">Detergents</a>
-													</li>
-													<li>
-														<a href="product2.html">Utensil Cleaners</a>
-													</li>
-													
-												</ul>
-											</div>
-											<div class="col-sm-6 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="product2.html">Pet Care</a>
-													</li>
-													<li>
-														<a href="product2.html">Cleaning Accessories</a>
-													</li>
-													<li>
-														<a href="product2.html">Pooja Needs</a>
-													</li>
-													
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</ul>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="faqs.html">Faqs</a>
-								</li>
-								<li class="dropdown">
-									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
-										<b class="caret"></b>
-									</a>
-									<ul class="dropdown-menu agile_short_dropdown">
-										<li>
-											<a href="icons.html">Web Icons</a>
-										</li>
-										<li>
-											<a href="typography.html">Typography</a>
-										</li>
-									</ul>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="contact.html">Contact</a>
-								</li>
+								@endforeach
 							</ul>
 						</div>
+
 					</div>
 				</nav>
 			</div>
