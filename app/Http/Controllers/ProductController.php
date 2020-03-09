@@ -67,59 +67,62 @@ class ProductController extends Controller
         return redirect()->back()->with('msg','Product Add Successfully');
     }
 
-    // public function manageCategory(){
+    public function manageProduct(){
 
-    // 	$categories = Category::all();
+    	$products = Product::all();
 
-    //     return view('Admin.category.manage-category',['categories' => $categories]);
-    // }
+        return view('Admin.product.manage-product',['products' => $products]);
+    }
 
-    // public function unpublishedCategory($id){
+    public function unpublishedProduct($id){
 
-    // 	$category = Category::find($id);
-    // 	$category->status = 0;
-    // 	$category->save();
+    	$product = Product::find($id);
+    	$product->status = 0;
+    	$product->save();
 
-    // 	return redirect()->back()->with('message','Category Info Unublished Successfully!');
-    // }
-
-
-    // public function publishedCategory($id){
-
-    // 	$category = Category::find($id);
-    // 	$category->status = 1;
-    // 	$category->save();
-
-    // 	return redirect()->back()->with('message','Category Info Published Successfully!');
-    // }
-
-    // public function editCategoryIndex($id){
-
-    // 	$category = Category::find($id);
-
-    // 	return view('Admin.category.edit-category',['category' => $category]);
-    // }
-
-    // public function updateCategory(Request $request){
-
-    // 	$category = Category::find($request->id);
-
-    // 	$category->category_name = $request->category_name;
-    //     $category->category_description = $request->category_description;
-    //     $category->status = $request->status;
-
-    //     $category->save();
+    	return redirect()->back()->with('message','product Info Unublished Successfully!');
+    }
 
 
+    public function publishedProduct($id){
 
-    // 	return redirect('/category/manage-category')->with('message','Category Updated Successfully!');
-    // }
+    	$product = Product::find($id);
+    	$product->status = 1;
+    	$product->save();
 
-    // public function deleteCategory($id){
+    	return redirect()->back()->with('message','product Info Published Successfully!');
+    }
 
-    // 	$category = Category::find($id);
-    // 	$category->delete();
+    public function editproductIndex($id){
 
-    // 	return redirect()->back()->with('message','Category Deleted Successfully!');
-    // }
+    	$product = Product::find($id);
+        $categories = Category::where('status',1)->get();
+        $brands = Brand::where('status',1)->get();
+        $subImages = SubImage::where('product_id',$id)->get();
+
+    	return view('Admin.product.edit-product',['product' => $product , 'categories' => $categories , 'brands' => $brands , 'subImages' => $subImages]);
+    }
+
+    public function updateproduct(Request $request){
+
+    	$product = Product::find($request->id);
+
+    	$product->product_name = $request->product_name;
+        $product->product_description = $request->product_description;
+        $product->status = $request->status;
+
+        $product->save();
+
+
+
+    	return redirect('/product/manage-product')->with('message','product Updated Successfully!');
+    }
+
+    public function deleteProduct($id){
+
+    	$product = Product::find($id);
+    	$product->delete();
+
+    	return redirect()->back()->with('message','product Deleted Successfully!');
+    }
 }

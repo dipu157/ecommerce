@@ -27,4 +27,17 @@ class EcommerceController extends Controller
 
         return view('front.category.category',['categories' => $categories, 'products' => $products]);
     }
+
+    public function product($id){
+
+    	$categories = Category::where('status',1)->get();
+
+    	$product = Product::find($id);
+
+    	$subImages = SubImage::where('product_id',$id);
+
+    	//return $product;
+
+        return view('front.product.product',['categories' => $categories ,'product' => $product ,'subImages' => $subImages]);
+    }
 }

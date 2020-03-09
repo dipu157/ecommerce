@@ -24,6 +24,11 @@ Route::get('/category/{id}',[
     'as' => 'category-product'
 ]);
 
+Route::get('/product-details/{id}',[
+    'uses' => 'EcommerceController@product',
+    'as' => 'product-details'
+]);
+
 /*=====================================Admin========================================*/
 
 /*=========Category==========*/
@@ -71,6 +76,19 @@ Route::get('product/add-product',['uses' => 'ProductController@addProduct', 'as'
 Route::post('product/save-product',['uses' =>'ProductController@saveProduct', 'as' => 'save-product']);
 
 Route::get('product/manage-product',['uses' => 'ProductController@manageProduct', 'as' => 'manage-product']);
+
+Route::get('product/unpublished-product/{id}',['uses' => 'ProductController@unpublishedProduct', 'as' => 'unpublished-product']);
+
+
+Route::get('product/published-product/{id}',['uses' => 'ProductController@publishedProduct', 'as' => 'published-product']);
+
+Route::get('product/edit-product-index/{id}',['uses' => 'ProductController@editProductIndex', 'as' => 'edit-product-index']);
+
+Route::post('product/update-product',['uses' => 'ProductController@updateProduct', 'as' => 'update-product']);
+
+Route::get('product/delete-product/{id}',['uses' => 'ProductController@deleteProduct', 'as' => 'delete-product']);
+
+/*==================================================================================*/
 
 
 Auth::routes();

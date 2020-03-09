@@ -11,29 +11,37 @@
 					<thead>
 						<tr>
 							<th>Sl</th>
-							<th>Category Name</th>
-							<th>Category Description</th>
-							<th>Publication Status</th>
+							<th>Product Name</th>
+							<th>product Name</th>
+							<th>Brand Name</th>
+							<th>Product Price</th>
+							<th>Product Stock</th>
+							<th>Product Image</th>
+							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						@php( $i = 1)
-						@foreach($categories as $category)
+						@foreach($products as $product)
 						<tr>
 							<td>{{$i++}}</td>
-							<td>{{ $category->category_name }}</td>
-							<td>{{ $category->category_description }}</td>
-							<td>{{ $category->status == 1 ? 'Published' : 'Unpublished' }}</td>
+							<td>{{ $product->product_name }}</td>
+							<td>{{ $product->category->category_name }}</td>
+							<td>{{ $product->brand->brand_name }}</td>
+							<td>{{ $product->product_price }}</td>
+							<td>{{ $product->product_stock }}</td>
+							<td><img src="{{ asset($product->product_image) }}" alt="" width="120px" height="80px"> </td>
+							<td>{{ $product->status == 1 ? 'Published' : 'Unpublished' }}</td>
 							<td>
-								@if( $category->status == 1 )
-								<a href="{{ route('unpublished-category', ['id' => $category->id]) }}" class="btn btn-primary">Published</a>
+								@if( $product->status == 1 )
+								<a href="{{ route('unpublished-product', ['id' => $product->id]) }}" class="btn btn-primary">Published</a>
 								@else
-								<a href="{{ route('published-category', ['id' => $category->id]) }}" class="btn btn-warning">Unpublished</a>
+								<a href="{{ route('published-product', ['id' => $product->id]) }}" class="btn btn-warning">Unpublished</a>
 								@endif
-								<a href="{{ route('edit-category-index', ['id' => $category->id]) }}" class="btn btn-success">Edit</a>
-								<a href="{{ route('delete-category', ['id' => $category->id]) }}" class="btn btn-danger">Delete</a>
+								<a href="{{ route('edit-product-index', ['id' => $product->id]) }}" class="btn btn-success">Edit</a>
+								<a href="{{ route('delete-product', ['id' => $product->id]) }}" class="btn btn-danger">Delete</a>
 							</td>
 						</tr>
 						@endforeach
